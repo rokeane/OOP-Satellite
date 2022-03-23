@@ -1,17 +1,13 @@
 public class SatelliteCtrl {
 
   private double time;
-  private double longitude;
-  private double latitude;
+  private double[] coordinates;
 
   /**
    * @returns coordinates of the satellite
    */
   public double[] getCoordinates() {
-
-    double[] coordinates = { this.latitude, this.longitude };
-    return coordinates;
-
+    return this.coordinates;
   }
 
   /**
