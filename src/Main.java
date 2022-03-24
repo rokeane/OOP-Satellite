@@ -10,25 +10,36 @@ public class Main {
   public static final int ORBIT_ALTITUDE = 750; // Km
   public static final int INCLINATION = 20; // Km
 
-  public static int counter = 0;
+  public static int time = 0;
 
   public static void main(String args[]) {
 
-    Clock clock = Clock.tick(Clock.systemUTC(), Duration.ofSeconds(1));
-    System.out.println("UTC time :: " + clock.instant());
-    System.out.println("millis :: " + clock.millis());
+    Rocket rocket = new Rocket();
+    Satellite satellite = new Satellite();
+    GroundStation gndStation = new GroundStation();
+
+    Clock clock = Clock.tick(Clock.systemUTC(), Duration.ofSeconds(0));
 
     long currentTime = clock.millis();
     long prevTime = clock.millis();
 
-    while (true) {
+    gndStation.launch(rocket);
+    System.out.println(rocket.getState());
+
+    while (rocket.getAltitude() < 750) {
       currentTime = clock.millis();
       if (currentTime > prevTime + 100) {
-        counter++;
-        System.out.println(counter);
+        time++;
+
+        gndStation.launch(rocket);
+        gndStation.updateTelemetry(rocket, time);
+
+        // System.out.println(time);
         prevTime = currentTime;
       }
     }
+    gndStation.release(rocket);
+    System.out.println(rocket.getState());
 
   }
 }

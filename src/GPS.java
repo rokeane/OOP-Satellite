@@ -7,8 +7,8 @@ public class GPS {
    * @returns current rocket coordinates
    */
   public GPS() {
-    this.longitude = 1.4742547702385902;
-    this.latitude = 43.56569930662392;
+    this.longitude = 1.5;
+    this.latitude = 43.5;
   }
 
   /**
@@ -21,8 +21,15 @@ public class GPS {
   /**
    * @returns current rocket coordinates
    */
+  public double getLatitude() {
+    return this.latitude;
+  }
+
+  /**
+   * @returns current rocket coordinates
+   */
   public void setLatitude(int time) {
-    this.latitude = 45 * Math.sin(2 * Math.PI * time / 90);
+    this.latitude = 90 * Math.sin(2 * Math.PI * time / 90);
   }
 
   /**

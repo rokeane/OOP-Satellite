@@ -1,31 +1,86 @@
 public class GroundStation {
 
-  private double[] coordinates;
+  private double longitude;
+  private double latitude;
 
   /**
    * @returns current rocket coordinates
    */
   public GroundStation() {
-    this.coordinates = new double[] { 0.0, 0.0 };
+    this.longitude = 0.0;
+    this.latitude = 0.0;
   }
 
   /**
    * @returns current rocket coordinates
    */
-  public GroundStation(double[] coordinates) {
-    this.coordinates = new double[] { coordinates[0], coordinates[1] };
+  public GroundStation(double longitude, double latitude) {
+    this.longitude = longitude;
+    this.latitude = latitude;
+  }
+
+  /**
+   * @returns current rocket coordinates
+   */
+  public double getLongitude() {
+    return this.longitude;
+  }
+
+  /**
+   * @returns current rocket coordinates
+   */
+  public double getLatitude() {
+    return this.latitude;
+  }
+
+  /**
+   * @returns current rocket coordinates
+   */
+  public void setLongitude(double longitude) {
+    this.longitude = longitude;
+  }
+
+  /**
+   * @returns current rocket coordinates
+   */
+  public void setLatitude(double latitude) {
+    this.latitude = latitude;
   }
 
   /**
    * @returns current rocket coordinates
    */
   public boolean analyseImageDPI(Image img) {
-    this.coordinates = new double[] { 0.0, 0.0 };
-    if (img.getgetImageDPI() > 300) {
+    if (img.getImageDPI() > 300) {
       return true;
     } else {
       return false;
     }
+  }
+
+  /**
+   * @returns current rocket coordinates
+   */
+  public void launch(Rocket rocket) {
+    rocket.setState("FLIGHT");
+  }
+
+  /**
+   * @returns current rocket coordinates
+   */
+  public void release(Rocket rocket) {
+    rocket.setState("RELEASE");
+  }
+
+  /**
+   * @returns current rocket coordinates
+   */
+  public void updateTelemetry(Rocket rocket, int time) {
+    rocket.computeMass(time);
+    rocket.computeVelocity(rocket.getCurrentMass());
+    rocket.computeAltitude(time, rocket.getVelocity());
+
+    System.out.println("Altitude = " + rocket.getAltitude());
   }
 
 }

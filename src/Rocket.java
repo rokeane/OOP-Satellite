@@ -12,7 +12,7 @@ public class Rocket {
   /**
    * @returns current rocket coordinates
    */
-  public Rocket(double[] coordinates) {
+  public Rocket() {
     this.velocity = 0.0;
     this.current_mass = INITIAL_MASS;
     this.altitude = 0.0;
@@ -58,7 +58,7 @@ public class Rocket {
    * @returns current rocket coordinates
    */
   public void computeVelocity(double current_mass) {
-    this.velocity = ejection_rate * Math.log10(INITIAL_MASS / current_mass);
+    this.velocity = EJECTION_RATE * Math.log10(INITIAL_MASS / current_mass);
   }
 
   /**

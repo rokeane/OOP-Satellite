@@ -1,20 +1,18 @@
+import java.time.*;
+
 public class SatelliteCtrl {
-
-  private double time;
-  private double[] coordinates;
-
-  /**
-   * @returns coordinates of the satellite
-   */
-  public double[] getCoordinates() {
-    return this.coordinates;
-  }
 
   /**
    * @returns the time on board the satellite
    */
-  public double getTime() {
-    return time;
-
+  public String isOverIsae(GPS gps, GroundStation gnd, Camera camera, Clock clock) {
+    if (gps.getLatitude() == gnd.getLatitude() && gps.getLongitude() == gnd.getLongitude()) {
+      double[] coordinates = new double[] { gps.getLongitude(), gps.getLatitude() };
+      camera.takeImage(clock.instant(), coordinates);
+      return "Taking Picture";
+    } else {
+      return "ISAE not acquired";
+    }
   }
+
 }

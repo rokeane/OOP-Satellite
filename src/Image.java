@@ -1,7 +1,9 @@
+import java.time.*;
+
 public class Image {
 
   private int imageDPI;
-  private int timeCode;
+  private Instant timeCode;
   private double[] coordinates;
 
   /**
@@ -9,17 +11,17 @@ public class Image {
    */
   public Image() {
     this.imageDPI = 0;
-    this.timeCode = 0;
+    this.timeCode = null;
     this.coordinates = new double[] { 0.0, 0.0 };
   }
 
   /**
    * @returns current rocket coordinates
    */
-  public Image(int imageDPI, int timeCode, double[] coordinates) {
+  public Image(int imageDPI, Instant timeCode, double[] coordinates) {
     this.imageDPI = imageDPI;
     this.timeCode = timeCode;
-    this.coordinates = new double[] { coordinates[0], coordinates[2] };
+    this.coordinates = new double[] { coordinates[0], coordinates[1] };
   }
 
   /**
@@ -32,7 +34,7 @@ public class Image {
   /**
    * @returns current rocket coordinates
    */
-  public int getTimeCode() {
+  public Instant getTimeCode() {
     return this.timeCode;
   }
 
@@ -53,7 +55,7 @@ public class Image {
   /**
    * @returns current rocket coordinates
    */
-  public void setTimeCode(int timeCode) {
+  public void setTimeCode(Instant timeCode) {
     this.timeCode = timeCode;
   }
 
