@@ -50,6 +50,27 @@ public class Rocket {
   /**
    * @returns current rocket coordinates
    */
+  public void setVelocity(double v) {
+    this.velocity = v;
+  }
+
+  /**
+   * @returns current rocket coordinates
+   */
+  public void setMass(double m) {
+    this.current_mass = m;
+  }
+
+  /**
+   * @returns current rocket coordinates
+   */
+  public void setAltitude(double alt) {
+    this.altitude = alt;
+  }
+
+  /**
+   * @returns current rocket coordinates
+   */
   public void setState(String state) {
     this.state = state;
   }
@@ -58,20 +79,20 @@ public class Rocket {
    * @returns current rocket coordinates
    */
   public void computeVelocity(double current_mass) {
-    this.velocity = EJECTION_RATE * Math.log10(INITIAL_MASS / current_mass);
+    this.velocity = RELEASE_RATE * Math.log(INITIAL_MASS / current_mass);
   }
 
   /**
    * @returns fuel left in rocket tank
    */
-  public void computeMass(int time) {
+  public void computeMass(double time) {
     this.current_mass = INITIAL_MASS - EJECTION_RATE * time;
   }
 
   /**
    * @returns current altitude of the rocket
    */
-  public void computeAltitude(int time, double velocity) {
+  public void computeAltitude(double time, double velocity) {
     this.altitude = (double) velocity * time;
   }
 

@@ -1,3 +1,5 @@
+import java.time.*;
+
 public class GroundStation {
 
   private double longitude;
@@ -75,12 +77,10 @@ public class GroundStation {
   /**
    * @returns current rocket coordinates
    */
-  public void updateTelemetry(Rocket rocket, int time) {
+  public void updateTelemetry(Rocket rocket, double time) {
     rocket.computeMass(time);
     rocket.computeVelocity(rocket.getCurrentMass());
     rocket.computeAltitude(time, rocket.getVelocity());
-
-    System.out.println("Altitude = " + rocket.getAltitude());
   }
 
 }

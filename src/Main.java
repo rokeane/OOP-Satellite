@@ -5,41 +5,52 @@ public class Main {
   public static final double EARTH_RADIUS = 6400000; // meters
   public static final double G = 0.0000000000667428; // m3×kg−1×s−2
   public static final double EARTH_MASS = 5973600000000000000000000.0; // Kg
-  public static final double VELOCITY = 28000; // Km/h
-  public static final int ORBITAL_PERIOD = 90; // minutes
-  public static final int ORBIT_ALTITUDE = 750; // Km
-  public static final int INCLINATION = 20; // Km
-
-  public static int time = 0;
 
   public static void main(String args[]) {
-
+    missionGUI gui = new missionGUI();
     Rocket rocket = new Rocket();
     Satellite satellite = new Satellite();
     GroundStation gndStation = new GroundStation();
-
     Clock clock = Clock.tick(Clock.systemUTC(), Duration.ofSeconds(0));
 
     long currentTime = clock.millis();
     long prevTime = clock.millis();
 
-    gndStation.launch(rocket);
-    System.out.println(rocket.getState());
+    double time = 0;
 
-    while (rocket.getAltitude() < 750) {
+    while (rocket.getAltitude() < 750000) {
       currentTime = clock.millis();
-      if (currentTime > prevTime + 100) {
-        time++;
-
-        gndStation.launch(rocket);
-        gndStation.updateTelemetry(rocket, time);
-
-        // System.out.println(time);
+      if (currentTime > prevTime + 10) {
+        if (gui.getIsLaunched()) {
+          gndStation.launch(rocket);
+          time++;
+          gui.updateRocketTelemetry(rocket);
+          gndStation.updateTelemetry(rocket, time * 0.6);
+        }
         prevTime = currentTime;
       }
     }
     gndStation.release(rocket);
-    System.out.println(rocket.getState());
+    gui.updateRocketTelemetry(rocket);
+
+    time = 0;
+    while (true) {
+      currentTime = clock.millis();
+      if (currentTime > prevTime + 1000) {
+        time++;
+        if (time % 10 == 0) {
+          satellite.getSatCtrl().isOverIsae(satellite.getGPS(), gndStation, satellite.getCamera(),
+              satellite.getClock());
+          if (gndStation.analyseImageDPI(satellite.getSatCtrl().getImage())) {
+            System.out.println("saving Image");
+          } else {
+            System.out.println("rejecting Image");
+          }
+        }
+        System.out.println(".");
+        prevTime = currentTime;
+      }
+    }
 
   }
 }

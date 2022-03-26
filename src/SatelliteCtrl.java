@@ -2,16 +2,27 @@ import java.time.*;
 
 public class SatelliteCtrl {
 
+  private Image img;
+
+  public SatelliteCtrl() {
+    this.img = new Image();
+  }
+
+  public Image getImage() {
+    return this.img;
+  }
+
   /**
    * @returns the time on board the satellite
    */
-  public String isOverIsae(GPS gps, GroundStation gnd, Camera camera, Clock clock) {
+  public void isOverIsae(GPS gps, GroundStation gnd, Camera camera, Clock clock) {
     if (gps.getLatitude() == gnd.getLatitude() && gps.getLongitude() == gnd.getLongitude()) {
       double[] coordinates = new double[] { gps.getLongitude(), gps.getLatitude() };
-      camera.takeImage(clock.instant(), coordinates);
-      return "Taking Picture";
+      System.out.println("Taking Picture");
+      System.out.println("UTC :: " + clock.instant());
+      this.img = camera.takeImage(clock.instant(), coordinates);
     } else {
-      return "ISAE not acquired";
+      System.out.println("ISAE not acquired");
     }
   }
 
