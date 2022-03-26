@@ -15,6 +15,11 @@ public class SatelliteCtrl {
   /**
    * @returns the time on board the satellite
    */
+public void updatePosition(GPS gps, double time){
+  gps.setLongitude(time);
+  gps.setLatitude(time);
+}
+
   public void isOverIsae(GPS gps, GroundStation gnd, Camera camera, Clock clock) {
     if (gps.getLatitude() == gnd.getLatitude() && gps.getLongitude() == gnd.getLongitude()) {
       double[] coordinates = new double[] { gps.getLongitude(), gps.getLatitude() };
@@ -25,5 +30,6 @@ public class SatelliteCtrl {
       System.out.println("ISAE not acquired");
     }
   }
+
 
 }

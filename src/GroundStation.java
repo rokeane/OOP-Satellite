@@ -9,8 +9,8 @@ public class GroundStation {
    * @returns current rocket coordinates
    */
   public GroundStation() {
-    this.longitude = 0.0;
-    this.latitude = 0.0;
+    this.longitude = 1.5;
+    this.latitude = 43.5;
   }
 
   /**
@@ -81,6 +81,10 @@ public class GroundStation {
     rocket.computeMass(time);
     rocket.computeVelocity(rocket.getCurrentMass());
     rocket.computeAltitude(time, rocket.getVelocity());
+  }
+  public void updateTelemetrySat(Satellite satellite, double time) {
+    satellite.getGPS().setLongitude(time);
+    satellite.getGPS().setLatitude(time);
   }
 
 }

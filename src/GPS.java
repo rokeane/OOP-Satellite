@@ -2,8 +2,7 @@ public class GPS {
 
   private double longitude;
   private double latitude;
-
-  public final static int INCLINATION = 20;
+  public final static double INCLINATION = 43.5;
 
   /**
    * @returns current rocket coordinates
@@ -30,15 +29,17 @@ public class GPS {
   /**
    * @returns current rocket coordinates
    */
-  public void setLatitude(int time) {
-    this.latitude = INCLINATION * Math.cos(2 * Math.PI * time / 90);
+  public void setLatitude(double time) {
+    double num = (Math.round(10*(INCLINATION * Math.cos(2 * Math.PI * time / 90))));
+    this.latitude = num/10;
   }
 
   /**
    * @returns current rocket coordinates
    */
-  public void setLongitude(int time) {
-    this.longitude = (((180 + 1.5) + (time * 4)) % 360) - 180;
+  public void setLongitude(double time) {
+    double num = (Math.round( 10*((((180 + 1.5) + (time * 4)) % 360) - 180) ));
+    this.longitude = num/10 ;
   }
 
 }
