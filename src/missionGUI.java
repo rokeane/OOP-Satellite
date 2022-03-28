@@ -88,31 +88,16 @@ public class missionGUI implements ActionListener {
     }
   }
 
-<<<<<<< HEAD
   // updates the satellite telemetry inside the GUI
-  public void updateSatelliteTelemetry(Satellite satellite, Rocket rocket) {
+  public void updateSatelliteTelemetry(Satellite satellite, Rocket rocket, double time) {
     if (rocket.getState() == "RELEASE") {
       longLabel.setText("Long: " + satellite.getGPS().getLongitude());
       latLabel.setText("Lat: " + satellite.getGPS().getLatitude());
+      timeLabel.setText("Time (minutes): " + time);
     }
   }
 
   // returns the attribute
-=======
-
-
-  public void updateSatelliteTelemetry(Satellite satellite, Rocket rocket, double time) {
-
-     if (rocket.getState() == "RELEASE") {
-
-      longLabel.setText("Long: "+ satellite.getGPS().getLongitude());
-      latLabel.setText("Lat: "+ satellite.getGPS().getLatitude());
-      timeLabel.setText("Time (minutes): "+ time);
-
-    }
-  }
-
->>>>>>> 171debd600f812b1c1282f8f0aaf44c9ac41363e
   public boolean getIsLaunched() {
     return this.isLaunched;
   }
@@ -141,10 +126,7 @@ public class missionGUI implements ActionListener {
     }
   }
 
-<<<<<<< HEAD
   // Sets the image attributes on the ground station side
-=======
->>>>>>> 171debd600f812b1c1282f8f0aaf44c9ac41363e
   public void imageReceived(boolean b, Image image) {
     textAreaGnd.append("Image Received\n");
     textAreaGnd.append("Time: " + image.getTimeCode());

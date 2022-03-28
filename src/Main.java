@@ -45,21 +45,11 @@ public class Main {
 
 		// infinite loop for the satellite orbit around ISAE
 		while (true) {
-
-<<<<<<< HEAD
 			currentTime = clock.millis();
 			if (currentTime > prevTime + 1000) {
-=======
-        time += 9;
-        gndStation.updateTelemetrySat(satellite, time);
-        gui.updateSatelliteTelemetry(satellite, rocket, time);
-        battery.setBatteryOn(time);
-        gui.setIsBatteryON(battery);
->>>>>>> 171debd600f812b1c1282f8f0aaf44c9ac41363e
-
 				time += 9;
 				gndStation.updateTelemetrySat(satellite, time);
-				gui.updateSatelliteTelemetry(satellite, rocket);
+				gui.updateSatelliteTelemetry(satellite, rocket, time);
 				battery.setBatteryOn(time);
 				gui.setIsBatteryON(battery);
 
