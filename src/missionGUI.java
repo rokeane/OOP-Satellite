@@ -14,6 +14,7 @@ public class missionGUI implements ActionListener {
   private JTextArea textArea = new JTextArea(50, 50);
   private JLabel gndLabel = new JLabel("Ground Station Log:");
   private JTextArea textAreaGnd = new JTextArea(50, 50);
+  private JLabel timeLabel = new JLabel("Time (minutes):     ");
   private JFrame frame = new JFrame();
 
   private boolean isLaunched;
@@ -39,6 +40,7 @@ public class missionGUI implements ActionListener {
     longLabel.setFont(new Font("Verdana", Font.BOLD, 20));
     satLabel.setFont(new Font("Verdana", Font.BOLD, 20));
     gndLabel.setFont(new Font("Verdana", Font.BOLD, 20));
+    timeLabel.setFont(new Font("Verdana", Font.PLAIN, 20));
 
     // the panel with the button and text
     JPanel panel = new JPanel();
@@ -56,6 +58,7 @@ public class missionGUI implements ActionListener {
     panel.add(areaScrollPane);
     panel.add(gndLabel);
     panel.add(areaScrollPaneGnd);
+    panel.add(timeLabel);
 
     // set up the frame and display it
     frame.add(panel, BorderLayout.CENTER);
@@ -85,6 +88,7 @@ public class missionGUI implements ActionListener {
     }
   }
 
+<<<<<<< HEAD
   // updates the satellite telemetry inside the GUI
   public void updateSatelliteTelemetry(Satellite satellite, Rocket rocket) {
     if (rocket.getState() == "RELEASE") {
@@ -94,6 +98,21 @@ public class missionGUI implements ActionListener {
   }
 
   // returns the attribute
+=======
+
+
+  public void updateSatelliteTelemetry(Satellite satellite, Rocket rocket, double time) {
+
+     if (rocket.getState() == "RELEASE") {
+
+      longLabel.setText("Long: "+ satellite.getGPS().getLongitude());
+      latLabel.setText("Lat: "+ satellite.getGPS().getLatitude());
+      timeLabel.setText("Time (minutes): "+ time);
+
+    }
+  }
+
+>>>>>>> 171debd600f812b1c1282f8f0aaf44c9ac41363e
   public boolean getIsLaunched() {
     return this.isLaunched;
   }
@@ -122,7 +141,10 @@ public class missionGUI implements ActionListener {
     }
   }
 
+<<<<<<< HEAD
   // Sets the image attributes on the ground station side
+=======
+>>>>>>> 171debd600f812b1c1282f8f0aaf44c9ac41363e
   public void imageReceived(boolean b, Image image) {
     textAreaGnd.append("Image Received\n");
     textAreaGnd.append("Time: " + image.getTimeCode());
