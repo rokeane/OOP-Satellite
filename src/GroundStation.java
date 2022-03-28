@@ -78,7 +78,7 @@ public class GroundStation {
   /**
    * updates the rocket telemetry with time
    */
-  public void updateTelemetry(Rocket rocket, double time) {
+  public void updateTelemetryRocket(Rocket rocket, double time) {
     rocket.computeMass(time);
     rocket.computeVelocity(rocket.getCurrentMass());
     rocket.computeAltitude(time, rocket.getVelocity());
