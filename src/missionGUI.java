@@ -17,11 +17,10 @@ public class missionGUI implements ActionListener {
   private JFrame frame = new JFrame();
 
   private boolean isLaunched;
-  private boolean imageCaptured;
 
   public missionGUI() {
     this.isLaunched = false;
-    // the clickable button
+
     JButton button = new JButton("Launch the Big Booty Rocket");
     button.addActionListener(this);
 
@@ -66,13 +65,14 @@ public class missionGUI implements ActionListener {
     frame.setVisible(true);
   }
 
-  // process the button clicks
+  // process the button click
   @Override
   public void actionPerformed(ActionEvent e) {
     this.setIsLaunched(true);
     phaseLabel.setText("State: FLIGHT");
   }
 
+  // updates the rocket telemetry inside the GUI
   public void updateRocketTelemetry(Rocket rocket) {
     if (rocket.getState() == "FLIGHT") {
       altLabel.setText("Altitude (m):  " + (int) rocket.getAltitude());
@@ -85,54 +85,53 @@ public class missionGUI implements ActionListener {
     }
   }
 
-
-
+  // updates the satellite telemetry inside the GUI
   public void updateSatelliteTelemetry(Satellite satellite, Rocket rocket) {
-
-     if (rocket.getState() == "RELEASE") {
-
-      longLabel.setText("Long: "+ satellite.getGPS().getLongitude());
-      latLabel.setText("Lat: "+ satellite.getGPS().getLatitude());
-
+    if (rocket.getState() == "RELEASE") {
+      longLabel.setText("Long: " + satellite.getGPS().getLongitude());
+      latLabel.setText("Lat: " + satellite.getGPS().getLatitude());
     }
   }
 
-
+  // returns the attribute
   public boolean getIsLaunched() {
     return this.isLaunched;
   }
 
+  // sets the attribute
   public void setIsLaunched(boolean b) {
     this.isLaunched = b;
   }
 
+  // sets the battery state inside the GUI
   public void setIsBatteryON(Battery battery) {
-    if(battery.getBatteryOn()){
+    if (battery.getBatteryOn()) {
       batteryLabel.setText("Solar Panels:  Activated");
-    }else{
+    } else {
       batteryLabel.setText("Solar Panels:  Deactivated");
     }
-
   }
 
+  // sets the image attributes on the GUI
   public void imageCaptured(boolean b, Image image) {
-    if (b == true){
+    if (b == true) {
       textArea.append("Capturing Image...");
-      textArea.append("\nDPI: "+ image.getImageDPI());
-      textArea.append("\nTime Code: "+ image.getTimeCode());
+      textArea.append("\nDPI: " + image.getImageDPI());
+      textArea.append("\nTime Code: " + image.getTimeCode());
       textArea.append("\nSending Image...\n\n");
     }
   }
+
+  // Sets the image attributes on the ground station side
   public void imageReceived(boolean b, Image image) {
     textAreaGnd.append("Image Received\n");
-    textAreaGnd.append("Time: "+image.getTimeCode());
+    textAreaGnd.append("Time: " + image.getTimeCode());
     textAreaGnd.append("\nAnalysing Image...\n");
-    if (b == true){
+    if (b == true) {
       textAreaGnd.append("Image Saved\n\n");
-    }else{
+    } else {
       textAreaGnd.append("Image Rejected\n\n");
     }
-
   }
 
 }

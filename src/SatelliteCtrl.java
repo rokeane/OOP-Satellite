@@ -4,22 +4,32 @@ public class SatelliteCtrl {
 
   private Image img;
 
+  /**
+   * default ctrl constructor
+   */
   public SatelliteCtrl() {
     this.img = new Image();
   }
 
+  /**
+   * @returns the image on board the satellite
+   */
   public Image getImage() {
     return this.img;
   }
 
   /**
-   * @returns the time on board the satellite
+   * updates the GPS coordinates
    */
-public void updatePosition(GPS gps, double time){
-  gps.setLongitude(time);
-  gps.setLatitude(time);
-}
+  public void updatePosition(GPS gps, double time) {
+    gps.setLongitude(time);
+    gps.setLatitude(time);
+  }
 
+  /**
+   * verifies the coordinates of the gnd station and ISAE, if both match, the
+   * camera will take an image
+   */
   public void isOverIsae(GPS gps, GroundStation gnd, Camera camera, Clock clock) {
     if (gps.getLatitude() == gnd.getLatitude() && gps.getLongitude() == gnd.getLongitude()) {
       double[] coordinates = new double[] { gps.getLongitude(), gps.getLatitude() };
@@ -30,6 +40,5 @@ public void updatePosition(GPS gps, double time){
       System.out.println("ISAE not acquired");
     }
   }
-
 
 }

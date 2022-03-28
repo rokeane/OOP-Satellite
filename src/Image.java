@@ -7,7 +7,7 @@ public class Image {
   private double[] coordinates;
 
   /**
-   * @returns current rocket coordinates
+   * Default image constructor
    */
   public Image() {
     this.imageDPI = 0;
@@ -16,7 +16,7 @@ public class Image {
   }
 
   /**
-   * @returns current rocket coordinates
+   * specific constructor of the image
    */
   public Image(int imageDPI, Instant timeCode, double[] coordinates) {
     this.imageDPI = imageDPI;
@@ -25,42 +25,43 @@ public class Image {
   }
 
   /**
-   * @returns current rocket coordinates
+   * @returns returns the image DPI
    */
   public int getImageDPI() {
     return this.imageDPI;
   }
 
   /**
-   * @returns current rocket coordinates
+   * @returns returns the Image time code
    */
   public Instant getTimeCode() {
     return this.timeCode;
   }
 
   /**
-   * @returns current rocket coordinates
+   * @returns the coordinates array containing longitude and latitude
    */
   public double[] getCoordinates() {
     return this.coordinates;
   }
 
   /**
-   * @returns current rocket coordinates
+   * @returns sets the image DPI
    */
   public void setImageDPI(int imageDPI) {
     this.imageDPI = imageDPI;
   }
 
   /**
-   * @returns current rocket coordinates
+   * @returns set the image time code with the satellite clock
    */
   public void setTimeCode(Instant timeCode) {
     this.timeCode = timeCode;
   }
 
   /**
-   * @returns current rocket coordinates
+   * @returns attaches the coordinates to the image before sending
+   * to ground station
    */
   public void setCoordinates(double[] coordinates) {
     this.coordinates[0] = coordinates[0];

@@ -13,7 +13,7 @@ public class Satellite {
   private Camera camera;
 
   /**
-   * @returns current rocket coordinates
+   * Satellite constructor that instantiates the GPS, Ctrl, clock and camera
    */
   public Satellite() {
     this.gps = new GPS();
@@ -23,30 +23,58 @@ public class Satellite {
   }
 
   /**
-   * @returns current rocket coordinates
+   * @returns GPS object
    */
   public GPS getGPS() {
     return this.gps;
   }
 
   /**
-   * @returns current rocket coordinates
+   * @returns the satellite ctrl object
    */
   public SatelliteCtrl getSatCtrl() {
     return this.satCtrl;
   }
 
   /**
-   * @returns current rocket coordinates
+   * @returns the satellite clock
    */
   public Clock getClock() {
     return this.clock;
   }
 
   /**
-   * @returns current rocket coordinates
+   * @returns the camera object
    */
   public Camera getCamera() {
     return this.camera;
+  }
+
+  /**
+   * sets GPS object
+   */
+  public void setGPS(GPS gps) {
+    this.gps = gps;
+  }
+
+  /**
+   * sets the satellite ctrl object
+   */
+  public void setSatCtrl(SatelliteCtrl satCtrl) {
+    this.satCtrl = satCtrl;
+  }
+
+  /**
+   * sets the satellite clock
+   */
+  public void setClock(Clock clock) {
+    this.clock = clock;
+  }
+
+  /**
+   * sets the camera object
+   */
+  public void setCamera(Camera cam) {
+    this.camera = cam;
   }
 }

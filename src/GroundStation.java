@@ -6,7 +6,7 @@ public class GroundStation {
   private double latitude;
 
   /**
-   * @returns current rocket coordinates
+   * Default GroundStation constructor
    */
   public GroundStation() {
     this.longitude = 1.5;
@@ -14,7 +14,7 @@ public class GroundStation {
   }
 
   /**
-   * @returns current rocket coordinates
+   * Constructor that specifies the longitude and latitude of the ground station
    */
   public GroundStation(double longitude, double latitude) {
     this.longitude = longitude;
@@ -22,35 +22,36 @@ public class GroundStation {
   }
 
   /**
-   * @returns current rocket coordinates
+   * @returns ground station longitude
    */
   public double getLongitude() {
     return this.longitude;
   }
 
   /**
-   * @returns current rocket coordinates
+   * @returns ground station latitude
    */
   public double getLatitude() {
     return this.latitude;
   }
 
   /**
-   * @returns current rocket coordinates
+   * sets the longitude of the ground station
    */
   public void setLongitude(double longitude) {
     this.longitude = longitude;
   }
 
   /**
-   * @returns current rocket coordinates
+   * sets the latitude of the ground station
    */
   public void setLatitude(double latitude) {
     this.latitude = latitude;
   }
 
   /**
-   * @returns current rocket coordinates
+   * @returns a boolean that indicates whether or not the image has been saved
+   * or rejected
    */
   public boolean analyseImageDPI(Image img) {
     if (img.getImageDPI() > 300) {
@@ -61,27 +62,31 @@ public class GroundStation {
   }
 
   /**
-   * @returns current rocket coordinates
+   * launches the rocket by setting the state of the rocket
    */
   public void launch(Rocket rocket) {
     rocket.setState("FLIGHT");
   }
 
   /**
-   * @returns current rocket coordinates
+   * releases the rocket by setting its state
    */
   public void release(Rocket rocket) {
     rocket.setState("RELEASE");
   }
 
   /**
-   * @returns current rocket coordinates
+   * updates the rocket telemetry with time
    */
   public void updateTelemetry(Rocket rocket, double time) {
     rocket.computeMass(time);
     rocket.computeVelocity(rocket.getCurrentMass());
     rocket.computeAltitude(time, rocket.getVelocity());
   }
+  
+  /**
+   * updates the satellite telemetry with time
+   */
   public void updateTelemetrySat(Satellite satellite, double time) {
     satellite.getGPS().setLongitude(time);
     satellite.getGPS().setLatitude(time);
