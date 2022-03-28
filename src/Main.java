@@ -61,7 +61,7 @@ public class Main {
 				if (time % 90 == 0 && satellite.getBattery().getBatteryOn()) {
 					satellite.getSatCtrl().isOverIsae(satellite.getGPS(), gndStation, satellite.getCamera(),
 							satellite.getClock());
-					gui.imageCaptured(true, satellite.getSatCtrl().getImage());
+					gui.imageCaptured(satellite,true, satellite.getSatCtrl().getImage());
 					gui.imageReceived(gndStation.analyseImageDPI(satellite.getSatCtrl().getImage()),
 							satellite.getSatCtrl().getImage());
 
