@@ -1,6 +1,6 @@
 public class Rocket {
 
-  public final double INITIAL_MASS = 150000; // kg
+  public final double INITIAL_MASS = 150000; //Empty mass + Initial Fuel (kg)
   public final double EJECTION_RATE = 140; // kg × s−1
   public final double RELEASE_RATE = 7657.126; // m/s
 
@@ -9,9 +9,6 @@ public class Rocket {
   private double altitude;
   private String state; // idle , flight , release
 
-  /**
-   * @returns current rocket coordinates
-   */
   public Rocket() {
     this.velocity = 0.0;
     this.current_mass = INITIAL_MASS;
@@ -19,78 +16,79 @@ public class Rocket {
     this.state = "IDLE";
   }
 
-  /**
-   * @returns current rocket coordinates
+  /*
+  returns current rocket velocity
    */
   public double getVelocity() {
     return this.velocity;
   }
 
-  /**
-   * @returns current rocket coordinates
-   */
+  /*
+  returns current rocket mass
+  */
   public double getCurrentMass() {
     return this.current_mass;
   }
 
-  /**
-   * @returns current rocket coordinates
+  /*
+   returns current rocket altitude
    */
   public double getAltitude() {
     return this.altitude;
   }
 
-  /**
-   * @returns current rocket coordinates
+  /*
+   returns current rocket State
    */
   public String getState() {
     return this.state;
   }
 
-  /**
-   * @returns current rocket coordinates
+  /*
+   updates the current velocity of the rocket
    */
   public void setVelocity(double v) {
     this.velocity = v;
   }
 
-  /**
-   * @returns current rocket coordinates
+  /*
+   sets rocket to its current mass
    */
   public void setMass(double m) {
     this.current_mass = m;
   }
 
-  /**
-   * @returns current rocket coordinates
+  /*
+   updates the current rocket altitude
    */
   public void setAltitude(double alt) {
     this.altitude = alt;
   }
 
-  /**
-   * @returns current rocket coordinates
+  /*
+   updates the current state of the rocket
    */
   public void setState(String state) {
     this.state = state;
   }
 
-  /**
-   * @returns current rocket coordinates
+  /*
+   updates the current rocket velocity
+   Computed as a function of release rate andthe rocket mass
    */
   public void computeVelocity(double current_mass) {
     this.velocity = RELEASE_RATE * Math.log(INITIAL_MASS / current_mass);
   }
 
-  /**
-   * @returns fuel left in rocket tank
+  /*
+    updates the fuel left in rocket tank based on the total mass
    */
   public void computeMass(double time) {
     this.current_mass = INITIAL_MASS - EJECTION_RATE * time;
   }
 
-  /**
-   * @returns current altitude of the rocket
+  /*
+    updates current altitude of the rocket
    */
   public void computeAltitude(double time, double velocity) {
     this.altitude = (double) velocity * time;

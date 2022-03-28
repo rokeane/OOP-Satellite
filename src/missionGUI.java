@@ -14,10 +14,10 @@ public class missionGUI implements ActionListener {
   private JTextArea textArea = new JTextArea(50, 50);
   private JLabel gndLabel = new JLabel("Ground Station Log:");
   private JTextArea textAreaGnd = new JTextArea(50, 50);
+  private JLabel timeLabel = new JLabel("Time (minutes):     ");
   private JFrame frame = new JFrame();
 
   private boolean isLaunched;
-  private boolean imageCaptured;
 
   public missionGUI() {
     this.isLaunched = false;
@@ -40,6 +40,7 @@ public class missionGUI implements ActionListener {
     longLabel.setFont(new Font("Verdana", Font.BOLD, 20));
     satLabel.setFont(new Font("Verdana", Font.BOLD, 20));
     gndLabel.setFont(new Font("Verdana", Font.BOLD, 20));
+    timeLabel.setFont(new Font("Verdana", Font.PLAIN, 20));
 
     // the panel with the button and text
     JPanel panel = new JPanel();
@@ -57,6 +58,7 @@ public class missionGUI implements ActionListener {
     panel.add(areaScrollPane);
     panel.add(gndLabel);
     panel.add(areaScrollPaneGnd);
+    panel.add(timeLabel);
 
     // set up the frame and display it
     frame.add(panel, BorderLayout.CENTER);
@@ -87,16 +89,16 @@ public class missionGUI implements ActionListener {
 
 
 
-  public void updateSatelliteTelemetry(Satellite satellite, Rocket rocket) {
+  public void updateSatelliteTelemetry(Satellite satellite, Rocket rocket, double time) {
 
      if (rocket.getState() == "RELEASE") {
 
       longLabel.setText("Long: "+ satellite.getGPS().getLongitude());
       latLabel.setText("Lat: "+ satellite.getGPS().getLatitude());
+      timeLabel.setText("Time (minutes): "+ time);
 
     }
   }
-
 
   public boolean getIsLaunched() {
     return this.isLaunched;
@@ -112,7 +114,6 @@ public class missionGUI implements ActionListener {
     }else{
       batteryLabel.setText("Solar Panels:  Deactivated");
     }
-
   }
 
   public void imageCaptured(boolean b, Image image) {
@@ -123,6 +124,7 @@ public class missionGUI implements ActionListener {
       textArea.append("\nSending Image...\n\n");
     }
   }
+
   public void imageReceived(boolean b, Image image) {
     textAreaGnd.append("Image Received\n");
     textAreaGnd.append("Time: "+image.getTimeCode());
@@ -132,7 +134,6 @@ public class missionGUI implements ActionListener {
     }else{
       textAreaGnd.append("Image Rejected\n\n");
     }
-
   }
 
 }

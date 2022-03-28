@@ -42,7 +42,7 @@ public class Main {
 
         time += 9;
         gndStation.updateTelemetrySat(satellite, time);
-        gui.updateSatelliteTelemetry(satellite, rocket);
+        gui.updateSatelliteTelemetry(satellite, rocket, time);
         battery.setBatteryOn(time);
         gui.setIsBatteryON(battery);
 
