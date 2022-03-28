@@ -118,11 +118,12 @@ public class missionGUI implements ActionListener {
   }
 
   // sets the image attributes on the GUI
-  public void imageCaptured(boolean b, Image image) {
-    if (b == true) {
+  public void imageCaptured(Satellite satellite, boolean b, Image image) {
+    if (b == true){
       textArea.append("Capturing Image...");
-      textArea.append("\nDPI: " + image.getImageDPI());
-      textArea.append("\nTime Code: " + image.getTimeCode());
+      textArea.append("\nCoordinates: "+ satellite.getGPS().getLatitude() + "°N " + satellite.getGPS().getLongitude() + "°E" );
+      textArea.append("\nDPI: "+ image.getImageDPI());
+      textArea.append("\nTime Code: "+ image.getTimeCode());
       textArea.append("\nSending Image...\n\n");
     }
   }
