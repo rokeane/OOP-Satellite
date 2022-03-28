@@ -11,6 +11,7 @@ public class Satellite {
   private SatelliteCtrl satCtrl;
   private Clock clock;
   private Camera camera;
+  private Battery battery;
 
   /**
    * Satellite constructor that instantiates the GPS, Ctrl, clock and camera
@@ -20,6 +21,7 @@ public class Satellite {
     this.satCtrl = new SatelliteCtrl();
     this.clock = Clock.tick(Clock.systemUTC(), Duration.ofSeconds(0));
     this.camera = new Camera();
+    this.battery = new Battery();
   }
 
   /**
@@ -51,6 +53,13 @@ public class Satellite {
   }
 
   /**
+   * @returns the battery object
+   */
+  public Battery getBattery() {
+    return this.battery;
+  }
+
+  /**
    * sets GPS object
    */
   public void setGPS(GPS gps) {
@@ -76,5 +85,12 @@ public class Satellite {
    */
   public void setCamera(Camera cam) {
     this.camera = cam;
+  }
+
+  /**
+   * sets the battery object
+   */
+  public void setBattery(Battery battery) {
+    this.battery = battery;
   }
 }

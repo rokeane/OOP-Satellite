@@ -1,3 +1,18 @@
+/*
+ * GPS calculates the satellites coordinates with respect to its position above
+ * Earth
+ *
+ * Inclination of 20 degrees would mean that the satellite would never reach
+ * ISAE Therefore, the inclination is set to 43.5 degrees
+ *
+ * We have a 90 min period
+ *
+ * ISAE coordinates : long = 1.4742547702385902 / lat = 43.56569930662392
+ *
+ * Satellite is assumed to begin over ISAE where the ground station is also
+ * located. Coordinates rounded to one decimal point
+ */
+
 public class GPS {
 
   private double longitude;
@@ -5,28 +20,23 @@ public class GPS {
   public final static double INCLINATION = 43.5;
 
   /*
-   * GPS calculates the satellites coordinates with respect to its position above
-   * Earth
-   *
-   * Inclination of 20 degrees would mean that the satellite would never reach
-   * ISAE Therefore, the inclination is set to 43.5 degrees
-   *
-   * We have a 90 min period
-   *
-   * ISAE coordinates : long = 1.4742547702385902 / lat = 43.56569930662392
-   *
-   * Satellite is assumed to begin over ISAE where the ground station is also
-   * located. Coordinates rounded to one decimal point
+   * Default GPS constructor
    */
   public GPS() {
     this.longitude = 1.5;
     this.latitude = 43.5;
   }
 
+  /*
+   * @returns GPS longitude
+   */
   public double getLongitude() {
     return this.longitude;
   }
 
+  /*
+   * @returns GPS latitude
+   */
   public double getLatitude() {
     return this.latitude;
   }

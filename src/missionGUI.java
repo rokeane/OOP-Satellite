@@ -11,9 +11,9 @@ public class missionGUI implements ActionListener {
   private JLabel longLabel = new JLabel("Long:     ");
   private JLabel batteryLabel = new JLabel("Solar Panels:     ");
   private JLabel satLabel = new JLabel("Satellite Controller Log:");
-  private JTextArea textArea = new JTextArea(50, 50);
+  private JTextArea textArea = new JTextArea(10, 30);
   private JLabel gndLabel = new JLabel("Ground Station Log:");
-  private JTextArea textAreaGnd = new JTextArea(50, 50);
+  private JTextArea textAreaGnd = new JTextArea(10, 30);
   private JLabel timeLabel = new JLabel("Time (minutes):     ");
   private JFrame frame = new JFrame();
 
@@ -31,20 +31,21 @@ public class missionGUI implements ActionListener {
     JScrollPane areaScrollPaneGnd = new JScrollPane(textAreaGnd);
     areaScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-    altLabel.setFont(new Font("Verdana", Font.BOLD, 20));
-    velocityLabel.setFont(new Font("Verdana", Font.BOLD, 20));
-    massLabel.setFont(new Font("Verdana", Font.BOLD, 20));
-    phaseLabel.setFont(new Font("Verdana", Font.BOLD, 20));
-    batteryLabel.setFont(new Font("Verdana", Font.BOLD, 20));
-    latLabel.setFont(new Font("Verdana", Font.BOLD, 20));
-    longLabel.setFont(new Font("Verdana", Font.BOLD, 20));
-    satLabel.setFont(new Font("Verdana", Font.BOLD, 20));
-    gndLabel.setFont(new Font("Verdana", Font.BOLD, 20));
-    timeLabel.setFont(new Font("Verdana", Font.PLAIN, 20));
+    altLabel.setFont(new Font("Verdana", Font.BOLD, 15));
+    velocityLabel.setFont(new Font("Verdana", Font.BOLD, 15));
+    massLabel.setFont(new Font("Verdana", Font.BOLD, 15));
+    phaseLabel.setFont(new Font("Verdana", Font.BOLD, 15));
+    batteryLabel.setFont(new Font("Verdana", Font.BOLD, 15));
+    latLabel.setFont(new Font("Verdana", Font.BOLD, 15));
+    longLabel.setFont(new Font("Verdana", Font.BOLD, 15));
+    satLabel.setFont(new Font("Verdana", Font.BOLD, 15));
+    gndLabel.setFont(new Font("Verdana", Font.BOLD, 15));
+    timeLabel.setFont(new Font("Verdana", Font.PLAIN, 15));
 
     // the panel with the button and text
     JPanel panel = new JPanel();
-    panel.setBorder(BorderFactory.createEmptyBorder(30, 100, 100, 200));
+    panel.setBorder(BorderFactory.createEmptyBorder(10, 30, 10, 30)); // top,left,bottom,right
+    panel.setPreferredSize(new Dimension(500, 700));
     panel.setLayout(new GridLayout(0, 1));
     panel.add(button);
     panel.add(altLabel);

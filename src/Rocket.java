@@ -9,6 +9,9 @@ public class Rocket {
   private double altitude;
   private String state; // idle , flight , release
 
+  /*
+   * Default Rocket constructor
+   */
   public Rocket() {
     this.velocity = 0.0;
     this.current_mass = INITIAL_MASS;

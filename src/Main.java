@@ -16,7 +16,6 @@ public class Main {
 		Satellite satellite = new Satellite();
 		GroundStation gndStation = new GroundStation();
 		Clock clock = Clock.tick(Clock.systemUTC(), Duration.ofSeconds(0));
-		Battery battery = new Battery();
 
 		// variables to be used for simulation time
 		long currentTime = clock.millis();
@@ -50,8 +49,8 @@ public class Main {
 				time += 9;
 				gndStation.updateTelemetrySat(satellite, time);
 				gui.updateSatelliteTelemetry(satellite, rocket, time);
-				battery.setBatteryOn(time);
-				gui.setIsBatteryON(battery);
+				satellite.getBattery().setBatteryOn(time);
+				gui.setIsBatteryON(satellite.getBattery());
 
 				satellite.getSatCtrl().updatePosition(satellite.getGPS(), time);
 				System.out.println("Long:" + satellite.getGPS().getLongitude() + "Lat:" + satellite.getGPS().getLatitude());
@@ -59,7 +58,7 @@ public class Main {
 
 				// every 90 mins if the batteries are on, the satellite will capture an image if
 				// it is over ISAE
-				if (time % 90 == 0 && battery.getBatteryOn()) {
+				if (time % 90 == 0 && satellite.getBattery().getBatteryOn()) {
 					satellite.getSatCtrl().isOverIsae(satellite.getGPS(), gndStation, satellite.getCamera(),
 							satellite.getClock());
 					gui.imageCaptured(true, satellite.getSatCtrl().getImage());
