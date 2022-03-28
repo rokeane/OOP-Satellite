@@ -1,2 +1,2 @@
 # OOP-Satellite
-Big Booty OOP Project
+BB OOP Project

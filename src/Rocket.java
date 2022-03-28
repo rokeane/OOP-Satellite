@@ -94,7 +94,7 @@ public class Rocket {
    * updates current altitude of the rocket
    */
   public void computeAltitude(double time, double velocity) {
-    this.altitude = (double) velocity * time;
+    this.altitude = (double) 0.2*velocity * time;
   }
 
 }

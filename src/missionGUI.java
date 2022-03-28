@@ -5,7 +5,7 @@ import javax.swing.*;
 public class missionGUI implements ActionListener {
   private JLabel altLabel = new JLabel("Altitude (m):  0     ");
   private JLabel velocityLabel = new JLabel("Velocity (m/s):  0     ");
-  private JLabel massLabel = new JLabel("Mass (Kg):  0     ");
+  private JLabel massLabel = new JLabel("Mass (kg):  150000     ");
   private JLabel phaseLabel = new JLabel("State:  IDLE     ");
   private JLabel latLabel = new JLabel("Lat:     ");
   private JLabel longLabel = new JLabel("Long:     ");
@@ -22,7 +22,7 @@ public class missionGUI implements ActionListener {
   public missionGUI() {
     this.isLaunched = false;
 
-    JButton button = new JButton("Launch the Big Booty Rocket");
+    JButton button = new JButton("Launch the Big Rocket 🚀");
     button.addActionListener(this);
 
     JScrollPane areaScrollPane = new JScrollPane(textArea);
@@ -64,7 +64,7 @@ public class missionGUI implements ActionListener {
     // set up the frame and display it
     frame.add(panel, BorderLayout.CENTER);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setTitle("Big Booty Control Center");
+    frame.setTitle("BB Control Center 🛰️");
     frame.pack();
     frame.setVisible(true);
   }
