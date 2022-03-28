@@ -32,7 +32,7 @@ public class Main {
 					gndStation.launch(rocket);
 					time++;
 					gui.updateRocketTelemetry(rocket);
-					gndStation.updateTelemetry(rocket, time * 0.6);
+					gndStation.updateTelemetryRocket(rocket, time * 0.6);
 				}
 				prevTime = currentTime;
 			}
