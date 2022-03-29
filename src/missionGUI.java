@@ -18,9 +18,11 @@ public class missionGUI implements ActionListener {
   private JFrame frame = new JFrame();
 
   private boolean isLaunched;
+  private boolean isReleased;
 
   public missionGUI() {
     this.isLaunched = false;
+
 
     JButton button = new JButton("Launch the Big Rocket 🚀");
     button.addActionListener(this);
@@ -72,8 +74,11 @@ public class missionGUI implements ActionListener {
   // process the button click
   @Override
   public void actionPerformed(ActionEvent e) {
-    this.setIsLaunched(true);
-    phaseLabel.setText("State: FLIGHT");
+    if (this.isLaunched == false){
+      this.setIsLaunched(true);
+      phaseLabel.setText("State: FLIGHT");
+    }
+
   }
 
   // updates the rocket telemetry inside the GUI
@@ -95,6 +100,7 @@ public class missionGUI implements ActionListener {
       longLabel.setText("Long: " + satellite.getGPS().getLongitude());
       latLabel.setText("Lat: " + satellite.getGPS().getLatitude());
       timeLabel.setText("Time (minutes): " + time);
+
     }
   }
 
@@ -112,8 +118,10 @@ public class missionGUI implements ActionListener {
   public void setIsBatteryON(Battery battery) {
     if (battery.getBatteryOn()) {
       batteryLabel.setText("Solar Panels:  Activated");
+      batteryLabel.setForeground(Color.GREEN);
     } else {
       batteryLabel.setText("Solar Panels:  Deactivated");
+      batteryLabel.setForeground(Color.RED);
     }
   }
 

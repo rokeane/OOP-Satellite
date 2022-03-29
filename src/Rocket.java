@@ -90,7 +90,7 @@ public class Rocket {
     this.current_mass = INITIAL_MASS - EJECTION_RATE * time;
   }
 
-  /*
+  /*cd
    * updates current altitude of the rocket
    */
   public void computeAltitude(double time, double velocity) {
